@@ -1,0 +1,25 @@
+name: Update definition files in iOS repos
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  Trigger_iOS_definition_update:
+    name: Trigger iOS repos CI to update definitions to latest release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call webhook
+        run: |
+          echo "github.event_name:" ${{ github.event_name }}
+          echo "github.event.action:" ${{ github.event.action }}
+          echo "github.event.prerelease:" ${{ github.event.prerelease }}
+          echo "github.event.release.tag_name:" ${{ github.event.release.tag_name }}
+          echo "env.GITHUB_REF:" ${{ env.GITHUB_REF }}
+          echo "env.GITHUB_REF:" ${{ env.GITHUB_REF_NAME }}
+          echo "github.ref:" ${{ github.ref }}
+          echo "github.ref_name:" ${{ github.ref_name }}
+          echo "github.ref_type:" ${{ github.ref_type }}
+          
